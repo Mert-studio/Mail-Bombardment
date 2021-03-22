@@ -6,7 +6,7 @@ from email.mime. text import MIMEText
 
 import sys
 
-#Kullanmadan Önce Gönderici E-posta Hesabında 'Daha az güvenli uygulamalara izin ver' özelliği aktif olmalı.
+#The Allow less secure apps feature must be enabled on the Sender Email Account before use.
 
 mesaj = MIMEMultipart()
 
